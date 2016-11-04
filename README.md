@@ -1,51 +1,60 @@
 import java.util.Scanner;   //Needed for Scanner class
 /**
- * This class is to show a Box and it's size
+ * This class is to show a Box, it's size and whether or not it will be filled
  * @author KareemWilliams
  */
 public class isBox 
 {
-    static void isBox(int filledRows)
+    static boolean isBox(int x)
     {
-        if(filledRows < 4 || filledRows > 10)
+        Scanner keyboard = new Scanner(System.in);
+        String  fill = "";
+        boolean result = true;
+        if(x <= 10 && x >= 4)
         {
-            System.out.println("The number you chose is too big/small. Try again.");
-        }
-        else
-        {
-            for(int i = 1; i <= filledRows; i++)
+            System.out.print("Do you want it filled? Please answer with a yes or no: ");
+            fill = keyboard.nextLine();
+            
+            if(fill.equalsIgnoreCase("YES"))
             {
-                for(int j = 1; j <= filledRows; j++)
+                for(int i = 1; i <= x; i++)
                 {
-                    System.out.print("*");
-                }
-                System.out.println();
-            }
-        }
-    }
-    static void isBox(double unfilledRows)
-    {
-        if(unfilledRows < 4 || unfilledRows > 10)
-        {
-            System.out.println("The number you chose is too big/small. Try again.");
-        }
-        else
-        {
-            for(int i = 1; i <= unfilledRows; i++)
-            {
-                for(int j= 1; j <= unfilledRows; j++)
-                {
-                    if(i == 1 || i == unfilledRows || j == 1 || j == unfilledRows)
+                    for(int j = 1; j <= x; j++)
                     {
                         System.out.print("*");
                     }
-                    else
-                    {
-                        System.out.print(" ");
-                    }
+                    System.out.println();
                 }
-                System.out.println();
+            }
+            else if(fill.equalsIgnoreCase("NO"))
+            {
+                for(int i = 1; i <= x; i++)
+                {
+                    for(int j= 1; j <= x; j++)
+                    {
+                        if(i == 1 || i == x || j == 1 || j == x)
+                        {
+                            System.out.print("*");
+                        }
+                        else
+                        {
+                            System.out.print(" ");
+                        }
+                    }
+                    System.out.println();
+                }
+            }
+            else
+            {
+                System.out.println("You did not input Yes or No. Try again.");
             }
         }
+        else
+        {
+            System.out.println("The number you chose is too big/small. Try again.");
+            result = false;
+        }
+        return result;
     }
 }
+
