@@ -1,3 +1,4 @@
+package MidTerm;
 import java.util.Scanner;
 import java.io.PrintWriter;
 import java.io.File;
@@ -11,17 +12,17 @@ import java.io.IOException;
 **/
 public class checkIsShape 
 {
-    public checkIsShape() throws IOException
+    public checkIsShape()
     {
         checkIsShape();
     }
-    void checkIsShape() throws FileNotFoundException, IOException
+    void checkIsShape()
     {
         Scanner     keyboard = new Scanner(System.in);  //Scanner class to receive input from the keyboard
         String      shape = ""; //to get the shape user inputs
         int         rows;       //to get the amount of rows
-        String      size = "";  //the size of each shape
-        String      fill = "";  //To find out if user wants the shape filled
+        int         str = 1;   //the size of each shape
+        double      size = 1;
         String      fileName;
         boolean     endLoop = true;
         
@@ -53,63 +54,11 @@ public class checkIsShape
                     break;
 
                     case "CIRCLE": //For the shape Circle
-                    System.out.print("How large do you want the Circle? Please choose small, medium, or large: ");
-                    size = keyboard.nextLine().toLowerCase();
-                    if(size.equals("small"))
-                    {
-                        System.out.print("Would you like your Circle filled in? Please answer with a Yes or No: ");
-                        fill = keyboard.nextLine().toUpperCase();
-                        if(fill.equals("YES"))
-                        {
-                            System.out.println("You chose a "+ size +" Circle that will be filled in\n");
-                        }
-                        else if(fill.equals("NO"))
-                        {
-                            System.out.println("You chose a "+ size +" Circle\n");
-                        }
-                        else if(!fill.equals("YES") || !fill.equals("NO"))
-                        {
-                            System.out.println("You did not pick the appropriate option, try again.");
-                        }
-                    }
-                    else if(size.equals("medium"))
-                    {
-                        System.out.print("Would you like your Circle filled in? Please answer with a Yes or No: ");
-                        fill = keyboard.nextLine().toUpperCase();
-                        if(fill.equals("YES"))
-                        {
-                            System.out.println("You chose a "+ size +" Circle that will be filled in\n");
-                        }
-                        else if(fill.equals("NO"))
-                        {
-                            System.out.println("You chose a "+ size +" Circle\n");
-                        }
-                        else if(!fill.equals("YES") || !fill.equals("NO"))
-                        {
-                            System.out.println("You did not pick the appropriate option, try again.");
-                        }
-                    }
-                    else if(size.equals("large"))
-                    {
-                        System.out.print("Would you like your Circle filled in? Please answer with a Yes or No: ");
-                        fill = keyboard.nextLine().toUpperCase();
-                        if(fill.equals("YES"))
-                        {
-                            System.out.println("You chose a "+ size +" Circle that will be filled in\n");
-                        }
-                        else if(fill.equals("NO"))
-                        {
-                            System.out.println("You chose a "+ size +" Circle\n");
-                        }
-                        else if(!fill.equals("YES") || !fill.equals("NO"))
-                        {
-                            System.out.println("You did not pick the appropriate option, try again.");
-                        }
-                    }
-                    else if(!size.equals("small") || !size.equals("medium") || !size.equals("large"))
-                    {
-                        System.out.println("Please try again.");
-                    }
+                    System.out.print("How large do you want your number? Pick a number up to 50: ");
+                    size = keyboard.nextDouble();
+                    
+                    isCircle.isCircle(size);
+                    
                     break;
 
                     case "BOX": //For the shape Box
@@ -121,12 +70,12 @@ public class checkIsShape
                     break;
 
                     case "X IN A BOX":
-                    {
+                    
                         System.out.print("How many rows/columns would you like? Please choose between 4 and 10: ");
-                        rows = keyboard.nextInt();
+                        str = keyboard.nextInt();
                         
-                            isXInBox.isXInBox(rows);
-                    }
+                            isXInBox.isXInBox(str);
+                    
                     break;
 
                     default:
@@ -142,6 +91,6 @@ public class checkIsShape
                 endLoop = false;
             }
         }
-        inputFile.close();
+        //inputFile.close();
     }
 }
